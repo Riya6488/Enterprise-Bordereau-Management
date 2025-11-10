@@ -84,7 +84,7 @@ Displays expected vs. actual receipt timelines with the following flags and colo
 
 
 **🔄 CI/CD Deployment**:
- A CI/CD pipeline was implemented for seamless deployment across environments:
+ A CI/CD deployment in Microsoft fabric was implemented for seamless deployment across environments:
    - Development: Feature design, data validation, and local report testing.
    - UAT: User acceptance and functionality verification.
    - Production: Live environment deployment after automated validation.

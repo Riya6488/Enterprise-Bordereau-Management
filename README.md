@@ -39,73 +39,51 @@ Built using Power BI Desktop, the semantic model aggregates, cleans, and structu
     - _PROD_ – Live production data
 
 📈 **Reports Developed**
-1. Submission Monitor Report
+1. **BDX Submission Monitor Report**:
+Tracks the status and timeliness of scheduled BDX submissions for each contract or project.
+_Key Functionalities_:
+Displays expected vs. actual receipt timelines with the following flags and colour-codes:
+   - 🟢 On Schedule — More than 7 days away from expected date.
+   - 🟠 Due Soon — Within the next 7 days.
+   - 🔴 Overdue — Expected date passed, not received.
+   - 🟢 Received On Time — Received before or on expected date.
+   - 🔴 Received Late — Received after expected date.
 
-Tracks the receipt status and timeliness of scheduled data submissions for each contract or project.
+   _Displayed Fields_:
+   record_id, status, document_type, submission_date, reporting_period, expected_date, received_by, received_on, business_unit, contract_name, DerivedStatus
 
-Key Functionalities:
+   _Available Filters_: Document Type, Reporting Period, Status, Business Unit, Contract ID
+   
+   This report provides a consolidated view of submission timeliness, improving accountability and reducing manual monitoring efforts.
 
-Displays expected vs. actual receipt timelines.
+2. **OSND Tracking Report**: Monitors and identifies missing or delayed unique identifiers for processed transactions.
+   _About the Identifier_:
+   Each transaction record carries a unique identifier (OSND - Original Signing Number and Date, a combination of reference number and date) generated upon successful processing.
+   Missing identifiers may indicate unprocessed or unsubmitted transactions — crucial for ensuring data completeness.
 
-Uses color-coded visual cues:
-🟢 On Schedule — More than 7 days away from expected date.
-🟠 Due Soon — Within the next 7 days.
-🔴 Overdue — Expected date passed, not received.
-🟢 Received On Time — Received before or on expected date.
-🔴 Received Late — Received after expected date.
+   _Key Functionalities_:
+   - Detects missing identifiers across active records.
+   - Enables targeted filtering for root-cause analysis.
+   - Ensures reconciliation between processed and unprocessed transactions.
 
-Displayed Fields:
-record_id, status, document_type, submission_date, reporting_period, expected_date, received_by, received_on, business_unit, contract_name, DerivedStatus
+   _Displayed Fields_:
+   record_id, contract_id, entity_name, is_active, effective_start, effective_end, reporting_year, commission_rate, brokerage_rate, contract_category, product_segment, business_class, unique_identifier, currency, risk_type, partner, market_region, contract_name, business_unit
 
-Available Filters:
+   _Available Filters_: Carrier, Reporting Year, Unique Identifier, Contract ID
 
-Document Type
+   This report allows teams to detect missing reference IDs early(are flagged using a red colour-code) , improving data reliability and process traceability.
 
-Reporting Period
+**🧮 Tech Stack**
+| Component    | Technology                          |
+|------------------|--------------------------------------|
+| Data Source   | NoSQL (Azure Cosmos DB )|
+| Data Warehouse      | Azure Synapse Analytics           |
+| DerivedStatus    | Status category of record             | Overdue           |
+| StatusColor      | Visual color indicator based on logic | 🔴 Red            |
 
-Status
-
-Business Unit
-
-Contract ID
-
-This report provides a consolidated view of submission timeliness, improving accountability and reducing manual monitoring efforts.
-
-2. Identifier Tracking Report
-
-Monitors and identifies missing or delayed unique identifiers for processed transactions.
-
-About the Identifier:
-Each transaction record carries a unique identifier (e.g., a combination of reference number and date) generated upon successful processing.
-Missing identifiers may indicate unprocessed or unsubmitted transactions — crucial for ensuring data completeness.
-
-Key Functionalities:
-
-Detects missing identifiers across active records.
-
-Enables targeted filtering for root-cause analysis.
-
-Ensures reconciliation between processed and unprocessed transactions.
-
-Displayed Fields:
-record_id, contract_id, entity_name, is_active, effective_start, effective_end, reporting_year, commission_rate, brokerage_rate, contract_category, product_segment, business_class, unique_identifier, currency, risk_type, partner, market_region, contract_name, business_unit
-
-Available Filters:
-
-Partner / Carrier
-
-Reporting Year
-
-Unique Identifier
-
-Contract ID
-
-This report allows teams to detect missing reference IDs early, improving data reliability and process traceability.
-
-🧮 Tech Stack
-Component	Technology
-Data Source	NoSQL (Azure Cosmos DB / MongoDB)
-Data Warehouse	Azure Synapse Analytics / Snowflake
+	
+	/ MongoDB)
+	 / Snowflake
 Transformation Layer	SQL Views, DAX Expressions
 Reporting	Power BI Desktop (Semantic Model), Power BI Report Builder (Paginated Reports)
 Languages	SQL, DAX

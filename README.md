@@ -92,7 +92,6 @@ Displays expected vs. actual receipt timelines with the following flags and colo
 
 	   _Pipeline Features_:
    - Version-controlled Power BI and SQL artifacts.
-   - Automated build and deployment via YAML pipelines.
    - Environment variables for dynamic database and connection string mapping.
 
 This ensured consistent releases, faster testing cycles, and minimal downtime during updates.

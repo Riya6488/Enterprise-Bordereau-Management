@@ -78,37 +78,26 @@ Displays expected vs. actual receipt timelines with the following flags and colo
 |------------------|--------------------------------------|
 | Data Source   | NoSQL (Azure Cosmos DB )|
 | Data Warehouse      | Azure Synapse Analytics           |
-| DerivedStatus    | Status category of record             | Overdue           |
-| StatusColor      | Visual color indicator based on logic | 🔴 Red            |
+| Transformation Layer    | SQL Views, DAX Expressions            |
+| Reporting      | Power BI Desktop (Semantic Model), Power BI Report Builder (Paginated Reports) ||
 
+
+
+**🔄 CI/CD Deployment**:
+ A CI/CD pipeline was implemented for seamless deployment across environments:
+   - Development: Feature design, data validation, and local report testing.
+   - UAT: User acceptance and functionality verification.
+   - Production: Live environment deployment after automated validation.
 	
-	/ MongoDB)
-	 / Snowflake
-Transformation Layer	SQL Views, DAX Expressions
-Reporting	Power BI Desktop (Semantic Model), Power BI Report Builder (Paginated Reports)
-Languages	SQL, DAX
-🔄 CI/CD Deployment
 
-A CI/CD pipeline was implemented for seamless deployment across environments:
-
-Development: Feature design, data validation, and local report testing.
-
-UAT: User acceptance and functionality verification.
-
-Production: Live environment deployment after automated validation.
-
-Pipeline Features:
-
-Version-controlled Power BI and SQL artifacts.
-
-Automated build and deployment via YAML pipelines.
-
-Environment variables for dynamic database and connection string mapping.
+	   _Pipeline Features_:
+   - Version-controlled Power BI and SQL artifacts..
+   - Automated build and deployment via YAML pipelines.
+   - Environment variables for dynamic database and connection string mapping.
 
 This ensured consistent releases, faster testing cycles, and minimal downtime during updates.
 
-🚀 Outcomes & Impact
-
+🚀 **Outcomes & Impact**
 ✅ Automated submission and identifier tracking
 🕒 Reduced manual tracking time via centralized reports
 🎯 Quick anomaly detection through visual indicators
